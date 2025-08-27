@@ -24,7 +24,7 @@ export const app: Application = express();
 // Security middleware
 app.use(helmet());
 app.use(cors({
-  origin: true, // Allow all origins temporarily for debugging
+  origin: env.CLIENT_ORIGIN,
   credentials: true,
 }));
 
