@@ -112,6 +112,11 @@ app.use('/api/v1/contact', contactRoutes);
 app.use('/api/v1/upload', uploadRoutes);
 app.use('/api/v1/about', aboutRoutes);
 
+// Root route
+app.get('/', (_req: Request, res: Response) => {
+  res.status(200).json({ status: 'OK' });
+});
+
 // 404 handler
 app.use('*', (_req: Request, res: Response) => {
   res.status(404).json({
