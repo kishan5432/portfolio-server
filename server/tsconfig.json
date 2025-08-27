@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "target": "ES2020",
     "module": "CommonJS",
@@ -27,15 +27,13 @@
       "@/services/*": ["./src/services/*"],
       "@/utils/*": ["./src/utils/*"],
       "@/config/*": ["./src/config/*"],
-      "@portfolio/types": ["../../packages/shared-types/src"],
-      "@portfolio/types/*": ["../../packages/shared-types/src/*"]
+      "@portfolio/types": ["../packages/shared-types/src"],
+      "@portfolio/types/*": ["../packages/shared-types/src/*"]
     }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"],
   "references": [
-    {
-      "path": "../../packages/shared-types"
-    }
+    { "path": "../packages/shared-types" }
   ]
 }

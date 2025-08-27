@@ -38,7 +38,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
-const bcrypt_1 = __importDefault(require("bcrypt"));
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const UserSchema = new mongoose_1.Schema({
     email: {
         type: String,
@@ -84,8 +84,8 @@ UserSchema.pre('save', async function (next) {
     if (!this.isModified('passwordHash'))
         return next();
     try {
-        const salt = await bcrypt_1.default.genSalt(12);
-        this['passwordHash'] = await bcrypt_1.default.hash(this['passwordHash'], salt);
+        const salt = await bcryptjs_1.default.genSalt(12);
+        this['passwordHash'] = await bcryptjs_1.default.hash(this['passwordHash'], salt);
         next();
     }
     catch (error) {
@@ -94,7 +94,7 @@ UserSchema.pre('save', async function (next) {
 });
 // Compare password method
 UserSchema.methods.comparePassword = async function (candidatePassword) {
-    return bcrypt_1.default.compare(candidatePassword, this['passwordHash']);
+    return bcryptjs_1.default.compare(candidatePassword, this['passwordHash']);
 };
 // Indexes
 UserSchema.index({ email: 1 });
