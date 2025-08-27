@@ -4,7 +4,13 @@
     "target": "ES2020",
     "module": "CommonJS",
     "moduleResolution": "node",
-    "lib": ["ES2020"],
+    "lib": [
+      "ES2020"
+    ],
+    "types": [
+      "node",
+      "express"
+    ],
     "outDir": "dist",
     "rootDir": "src",
     "strict": true,
@@ -19,21 +25,48 @@
     "noEmit": false,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@/controllers/*": ["./src/controllers/*"],
-      "@/middleware/*": ["./src/middleware/*"],
-      "@/models/*": ["./src/models/*"],
-      "@/routes/*": ["./src/routes/*"],
-      "@/services/*": ["./src/services/*"],
-      "@/utils/*": ["./src/utils/*"],
-      "@/config/*": ["./src/config/*"],
-      "@portfolio/types": ["../packages/shared-types/src"],
-      "@portfolio/types/*": ["../packages/shared-types/src/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@/controllers/*": [
+        "./src/controllers/*"
+      ],
+      "@/middleware/*": [
+        "./src/middleware/*"
+      ],
+      "@/models/*": [
+        "./src/models/*"
+      ],
+      "@/routes/*": [
+        "./src/routes/*"
+      ],
+      "@/services/*": [
+        "./src/services/*"
+      ],
+      "@/utils/*": [
+        "./src/utils/*"
+      ],
+      "@/config/*": [
+        "./src/config/*"
+      ],
+      "@portfolio/types": [
+        "../packages/shared-types/src"
+      ],
+      "@portfolio/types/*": [
+        "../packages/shared-types/src/*"
+      ]
     }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"],
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
   "references": [
-    { "path": "../packages/shared-types" }
+    {
+      "path": "../packages/shared-types"
+    }
   ]
 }
