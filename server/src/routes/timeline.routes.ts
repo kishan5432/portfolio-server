@@ -1,4 +1,5 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
+import type { Request, Response } from 'express';
 import { TimelineItem } from '../models/TimelineItem';
 import { ApiResponse } from '../utils/ApiResponse';
 import { asyncHandler } from '../middleware/error.middleware';

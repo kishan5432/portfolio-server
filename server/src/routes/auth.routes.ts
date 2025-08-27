@@ -1,4 +1,5 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
+import type { Request, Response } from 'express';
 import { User } from '../models/User';
 import { generateToken, decodeToken } from '../utils/jwt';
 import { ApiResponse } from '../utils/ApiResponse';

@@ -1,4 +1,6 @@
-import express, { Application, Request, Response, NextFunction } from 'express';
+import express from 'express';
+import type { Application, Request, Response, NextFunction } from 'express';
+import { connectDatabase } from './db';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
@@ -78,6 +80,20 @@ app.use((req: Request, _res: Response, next: NextFunction) => {
     console.log('📝 Request body:', req.body);
   }
   next();
+});
+
+// Ensure database is connected (useful for serverless cold starts)
+let isDatabaseInitialized = false;
+app.use(async (_req: Request, _res: Response, next: NextFunction) => {
+  try {
+    if (!isDatabaseInitialized) {
+      await connectDatabase();
+      isDatabaseInitialized = true;
+    }
+    next();
+  } catch (error) {
+    next(error as Error);
+  }
 });
 
 // Health check endpoint

@@ -1,4 +1,5 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
+import type { Request, Response } from 'express';
 import { ContactMessage } from '../models/ContactMessage';
 import { ApiResponse } from '../utils/ApiResponse';
 import { asyncHandler } from '../middleware/error.middleware';
