@@ -1,5 +1,5 @@
 import express from 'express';
-import type { Application, Request, Response, NextFunction } from 'express';
+import type { Express, Request, Response, NextFunction } from 'express';
 import { connectDatabase } from './db';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -21,7 +21,7 @@ import contactRoutes from './routes/contact.routes';
 import uploadRoutes from './routes/upload.routes';
 import aboutRoutes from './routes/about.routes';
 
-export const app: Application = express();
+export const app: Express = express();
 
 // Security middleware
 app.use(helmet());
