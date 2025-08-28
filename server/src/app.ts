@@ -84,14 +84,22 @@ app.use((req: Request, _res: Response, next: NextFunction) => {
 
 // Ensure database is connected (useful for serverless cold starts)
 let isDatabaseInitialized = false;
+let connectionPromise: Promise<void> | null = null;
+
 app.use(async (_req: Request, _res: Response, next: NextFunction) => {
   try {
     if (!isDatabaseInitialized) {
-      await connectDatabase();
-      isDatabaseInitialized = true;
+      if (!connectionPromise) {
+        // Only create one connection promise to prevent multiple connection attempts
+        connectionPromise = connectDatabase().then(() => {
+          isDatabaseInitialized = true;
+        });
+      }
+      await connectionPromise;
     }
     next();
   } catch (error) {
+    console.error('Database connection error:', error);
     next(error as Error);
   }
 });
